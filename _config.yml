@@ -1,0 +1,20 @@
+title: "Pasindu Karunarathna"
+description: "Software development and projects"
+author: "Pasindu Karunarathna"
+theme: minima
+url: "https://pasindu-333.github.io"
+baseurl: ""
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+paginate: 3
+paginate_path: "/page:num/"
+
+header_pages:
+  - index.html
+  - projects.md
+  - achievements.md
+  - about.md

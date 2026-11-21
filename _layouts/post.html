@@ -1,0 +1,62 @@
+---
+layout: default
+---
+<article class="post h-entry post-font-{{ page.font | default: 'sans' }}" id="post-article" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {{ page.date | date: date_format }}
+      </time>
+      {%- if page.author -%}
+        &bull; <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+      {%- endif -%}
+    </p>
+
+    <div class="post-font-switcher" aria-label="Change post font">
+      <span class="font-label">Font:</span>
+      <button type="button" class="font-btn" data-font="sans">Sans</button>
+      <button type="button" class="font-btn" data-font="lora">Lora</button>
+      <button type="button" class="font-btn" data-font="serif">Playfair</button>
+      <button type="button" class="font-btn" data-font="mono">Mono</button>
+    </div>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  <a class="u-url" href="{{ page.url }}" hidden></a>
+</article>
+
+<script>
+  (function () {
+    var article = document.getElementById('post-article');
+    if (!article) return;
+
+    var buttons = document.querySelectorAll('.post-font-switcher .font-btn');
+    var postDefault = "{{ page.font | default: '' }}";
+    var savedFont = localStorage.getItem('blog-post-font');
+    var activeFont = postDefault || savedFont || 'sans';
+
+    function applyFont(fontName) {
+      article.classList.remove('post-font-sans', 'post-font-lora', 'post-font-serif', 'post-font-mono');
+      article.classList.add('post-font-' + fontName);
+      buttons.forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-font') === fontName);
+      });
+    }
+
+    applyFont(activeFont);
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var chosen = btn.getAttribute('data-font');
+        localStorage.setItem('blog-post-font', chosen);
+        applyFont(chosen);
+      });
+    });
+  })();
+</script>

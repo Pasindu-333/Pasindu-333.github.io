@@ -1,0 +1,66 @@
+---
+layout: default
+---
+
+<div class="home">
+  {{ content }}
+
+  {% if site.paginate %}
+    {% assign posts = paginator.posts %}
+  {% else %}
+    {% assign posts = site.posts %}
+  {% endif %}
+
+  {%- if posts.size > 0 -%}
+    {%- if page.list_title -%}
+      <h2 class="post-list-heading">{{ page.list_title }}</h2>
+    {%- endif -%}
+    <ul class="post-list">
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      {%- for post in posts -%}
+      <li>
+        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <h3>
+          <a class="post-link" href="{{ post.url}}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        {%- if site.show_excerpts -%}
+          {{ post.excerpt }}
+        {%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+
+    {% if site.paginate and paginator.total_pages > 1 %}
+      {% assign start_page = paginator.page | minus: 1 %}
+      {% if start_page < 1 %}
+        {% assign start_page = 1 %}
+      {% endif %}
+      {% assign end_page = start_page | plus: 2 %}
+      {% if end_page > paginator.total_pages %}
+        {% assign end_page = paginator.total_pages %}
+        {% assign start_page = end_page | minus: 2 %}
+        {% if start_page < 1 %}
+          {% assign start_page = 1 %}
+        {% endif %}
+      {% endif %}
+
+      <nav class="pagination" aria-label="Pagination">
+        {% for page_num in (start_page..end_page) %}
+          {% if page_num == paginator.page %}
+            <span class="page-box current">{{ page_num }}</span>
+          {% elsif page_num == 1 %}
+            <a href="{{ '/' }}" class="page-box">{{ page_num }}</a>
+          {% else %}
+            <a href="{{ site.paginate_path | replace: ':num', page_num }}" class="page-box">{{ page_num }}</a>
+          {% endif %}
+        {% endfor %}
+
+        {% if paginator.next_page %}
+          <a href="{{ paginator.next_page_path }}" class="page-box page-next">Next &rarr;</a>
+        {% endif %}
+      </nav>
+    {% endif %}
+  {%- endif -%}
+</div>

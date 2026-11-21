@@ -1,0 +1,117 @@
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-lora: 'Lora', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Dark Theme: Midnight Navy & Royal Blue */
+  --bg-color: #0a0e17;
+  --text-color: #f8fafc;
+  --muted-color: #94a3b8;
+  --border-color: #1e293b;
+  --code-bg: #0f172a;
+  --link-color: #3b82f6;
+  --link-hover: #60a5fa;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.wrapper {
+  max-width: 1140px;
+  width: 92%;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+
+.post-title,
+.page-heading,
+h1, h2, h3, h4 {
+  color: var(--text-color);
+}
+
+.page-content h3 {
+  color: #38bdf8;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.page-content hr {
+  margin: 44px 0;
+  border: 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.page-content ul {
+  margin-top: 10px;
+  margin-bottom: 24px;
+}
+
+.page-content li {
+  margin-bottom: 12px;
+  line-height: 1.65;
+  max-width: 78ch;
+}
+
+.page-content p {
+  margin-bottom: 18px;
+  line-height: 1.7;
+  max-width: 78ch;
+}
+
+blockquote {
+  color: var(--muted-color);
+  border-left: 3px solid var(--link-color);
+  background-color: var(--code-bg);
+  padding: 12px 18px;
+  border-radius: 0 8px 8px 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  margin: 24px 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.post-meta,
+.footer-col-wrapper {
+  color: var(--muted-color);
+}
+
+a {
+  color: var(--link-color);
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+/* Projects page monospace headings */
+body.page-projects .post-title,
+body.page-projects h2,
+body.page-projects h3 {
+  font-family: var(--font-mono);
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .page-content hr {
+    margin: 34px 0;
+  }
+}
