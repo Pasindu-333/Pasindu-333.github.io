@@ -4,6 +4,10 @@
   background-color: var(--bg-color);
 }
 
+.site-header {
+  position: relative;
+}
+
 .site-title,
 .site-title:visited {
   font-family: var(--font-sans);
@@ -21,21 +25,72 @@
 }
 
 .site-nav {
+  position: relative;
   float: right;
   line-height: normal;
   margin-top: 10px;
+  background-color: transparent;
+  border: none;
+  text-align: right;
 }
 
-.site-nav .trigger {
+.site-nav .nav-trigger {
+  display: none;
+}
+
+.site-nav label[for="nav-trigger"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--code-bg);
+}
+
+.site-nav .menu-icon {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  width: 18px;
+  height: 15px;
+  padding: 0;
+}
+
+.site-nav .menu-icon > svg {
+  fill: #38bdf8;
+}
+
+.site-nav input ~ .trigger {
+  display: none;
+  position: absolute;
+  top: 44px;
+  right: 0;
+  min-width: 180px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+.site-nav input:checked ~ .trigger {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
 }
 
 .site-nav .page-link,
 .site-nav .page-link:visited {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  box-sizing: border-box;
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 500;
@@ -45,7 +100,7 @@
   background-color: var(--code-bg);
   border: 1px solid var(--border-color);
   border-radius: 6px;
-  padding: 5px 11px;
+  padding: 8px 12px;
   margin: 0;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
@@ -90,16 +145,22 @@
 
 @media screen and (max-width: 600px) {
   .site-nav {
+    position: relative;
+    top: auto;
+    right: auto;
     margin-top: 8px;
-    background-color: var(--bg-color);
-    border-color: var(--border-color);
+    background-color: transparent;
+    border: none;
   }
 
-  .site-nav .trigger {
+  .site-nav input ~ .trigger {
+    padding: 8px;
+  }
+
+  .site-nav input:checked ~ .trigger {
     flex-direction: column;
     align-items: stretch;
     gap: 6px;
-    padding: 8px;
   }
 
   .site-nav .page-link {
