@@ -8,7 +8,20 @@ Computer science enthusiast passionate about coding, building useful software, a
 
 ---
 
+### Tech Stack
+
+**Languages**  
+`C` `C++` `Java` `TypeScript` `JavaScript` `Python` `SQL`
+
+**Databases & Backend**  
+`PostgreSQL` `MySQL` `Node.js`
+
+**Web & Tools**  
+`HTML` `Git` `GitHub` `Docker` `Linux`
+
+---
+
 ### Connect
-* **GitHub:** [github.com/Pasindu-333](https://github.com/Pasindu-333)
-* **LinkedIn:** [linkedin.com/in/pasindu-karunarathna](https://www.linkedin.com/in/pasindu-karunarathna-/)
-* **Email:** [Karunarathnapasindu333@gmail.com](mailto:Karunarathnapasindu333@gmail.com)
+* **[Connect with GitHub](https://github.com/Pasindu-333)**
+* **[Connect with LinkedIn](https://www.linkedin.com/in/pasindu-karunarathna-/)**
+* **[Connect with Email](mailto:Karunarathnapasindu333@gmail.com)**
