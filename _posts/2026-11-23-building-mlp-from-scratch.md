@@ -21,7 +21,7 @@ Mathematically, an artificial neuron takes a list of inputs `x`, multiplies each
 
 In Python, we initialize random weights between `-1` and `1` for each input and implement `__call__` so we can pass inputs directly as `n(x)`:
 
-``` 
+```python
 import random
 
 class Neuron:
@@ -49,7 +49,7 @@ class Neuron:
 
 A Layer is simply a collection of independent neurons that all receive the exact same input vector x. They do not connect to one another, each neuron computes its own output in parallel.
 
-```
+```python
 class Layer:
     def __init__(self, nin, nout):
         self.neurons = [Neuron(nin) for _ in range(nout)]
@@ -74,7 +74,7 @@ class Layer:
 
 A Multi-Layer Perceptron (MLP) chains multiple Layer objects sequentially, the output of one layer becomes the input to the next.
 
-```
+```python
 class MLP:
     def __init__(self, nin, nouts):
         sz = [nin] + nouts
@@ -90,10 +90,11 @@ class MLP:
 ```
 To build a network that takes 3 inputs, passes them through two hidden layers of 4 neurons, and produces 1 output.
 
-```
+```python
 x = [2.0, 3.0, -1.0]
 model = MLP(3, [4, 4, 1])
 prediction = model(x)
+
 ```
 ---
 
@@ -109,7 +110,7 @@ With the architecture defined, training comes down to a four-step loop:
 
 4. **Parameter update:** Nudge every weight and bias slightly in the opposite direction of its gradient (p.data += -0.05 * p.grad) to minimize the loss.
 
-```
+```python
 # Sample dataset: 4 examples with 3 features each
 xs = [
     [2.0, 3.0, -1.0],
